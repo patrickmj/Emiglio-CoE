@@ -1,5 +1,5 @@
 <?php
-$pageTitle = __('Scholars');
+$pageTitle ='Scholars';
 head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
 
@@ -7,7 +7,11 @@ head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 
     <h1><?php echo $pageTitle; ?> <?php echo __('(%s total)', total_results()); ?></h1>
 
-    <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
+    <div id="pagination-top" class="pagination">
+    <?php echo pagination_links(); ?>
+    <?php include 'scholar_alpha_pagination.php' ;?>
+    
+    </div>
 
     <?php while (loop_items()): ?>
         <div class="item hentry">

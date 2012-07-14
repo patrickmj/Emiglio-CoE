@@ -14,8 +14,45 @@
         <?php foreach($discussions as $discussion) : ?>
             <div class='mlatei-discussion-wrap' id='<?php echo $discussion->xml_id; ?>'>
                 
+                
                 <div class='mlatei-discussion-content-wrap'>
                     <?php echo $discussion->html; ?>
+                </div>
+                <div class='mlatei-discussion-references'>
+                    <ul id='mlatei-discussion-nav'>
+                        <li id='mlatei-discussion-bib-nav' >Note Bibliography</li>
+                        <li id='mlatei-discussion-passages-nav' >Passages Mentioned</li>                    
+                    </ul>
+                    
+                    
+                    <!-- Bibliography for discussion -->
+                    <div class='mlatei-discussion-bib-wrap'>
+                    <h3>Bibliography of Note</h3>
+                    <?php $discBib = mla_get_bibliography_for_discussion($discussion); ?>
+                    
+                        <?php foreach($discBib as $entry): ?>
+                        <div class='mla-bib-entry'>
+                        <?php echo $entry->html; ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- Passages referred to  -->
+                    <div class='mlatei-discussion-passages-wrap'>
+                    <h3>Passages</h3>
+                    <?php $passages = mla_get_passages_for_discussion($discussion); ?>
+                    
+                        <?php foreach($passages as $passage): ?>
+                        <div class='mla-passage'>
+                            <p class='mla-passage-line'>
+                            <?php echo $passage->n; ?>
+                            </p>
+                            <div class='mla-passage-html'>
+                                <?php echo $passage->html; ?>
+                            </div>
+                            
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>        
         <?php endforeach; ?>
@@ -35,6 +72,27 @@
                 <h3><?php echo $discussion->label ;?></h3>
                 <div class='mlatei-discussion-content-wrap'>
                 <?php echo $discussion->html; ?>
+                
+                <!-- Bibliography for discussion -->
+                <?php $discBib = mla_get_bibliography_for_discussion($discussion); ?>
+                <div class='mlatei-discussion-bib-wrap'>
+                    <?php foreach($discBib as $entry): ?>
+                    <div class='mla-bib-entry'>
+                    <?php echo $entry->html; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- Passages referred to  -->
+                <?php $passages = mla_get_passages_for_discussion($discussion); ?>
+                <div class='mlatei-passages-wrap'>
+                    <?php foreach($passages as $passage): ?>
+                    <div class='mla-passage'>
+                    <?php $passage->html; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                
+                
                 </div>
             </div>
         <?php endforeach; ?>
@@ -54,6 +112,28 @@
                 <h3><?php echo $discussion->label ;?></h3>
                 <div class='mlatei-discussion-content-wrap'>
                 <?php echo $discussion->html; ?>
+                
+                <!-- Bibliography for discussion -->
+                <?php $discBib = mla_get_bibliography_for_discussion($discussion); ?>
+                <div class='mlatei-discussion-bib-wrap'>
+                    <?php foreach($discBib as $entry): ?>
+                    <div class='mla-bib-entry'>
+                    <?php echo $entry->html; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- Passages referred to  -->
+                <?php $passages = mla_get_passages_for_discussion($discussion); ?>
+                <h3>Passages</h3>
+                <div class='mlatei-passages-wrap'>
+                    <?php foreach($passages as $passage): ?>
+                    <div class='mla-passage'>
+                    <?php $passage->html; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                
+                
                 </div>
             </div>
         <?php endforeach; ?>
