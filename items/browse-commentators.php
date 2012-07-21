@@ -1,22 +1,41 @@
-
 <?php
-$first = $this->items[0];
-$last = $this->items[count($this->items) - 1];
-$firstName = item('Dublin Core', 'Title', array(), $first);
-$lastName = item('Dublin Core', 'Title', array(), $last);
-$pageTitle = 'Scholars: ' . $firstName ;
-if(count($this->items) >1 ) {
-    $pageTitle .= ' to ' . $lastName; 
-}
+    if($this->items) {    
+        $first = $this->items[0];
+        $last = $this->items[count($this->items) - 1];
+        $firstName = item('Dublin Core', 'Title', array(), $first);
+        $lastName = item('Dublin Core', 'Title', array(), $last);
+        $pageTitle = 'Scholars: ' . $firstName ;
+        if(count($this->items) >1 ) {
+            $pageTitle .= ' to ' . $lastName;
+        }
+        
+    }
 
-head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
+
+    head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
+<?php
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+    $tag = $request->getParam('tag'); 
+    $tags = $request->getParam('tags');
+    
+?>
+<?php if(!$this->items): ?>
+
+<p>Looks like no scholar has commented on <?php echo $tag; ?> </p>
+<p>Maybe try the more general search to <a href="<?php echo uri('items/browse/tag/' . $tag); ?>">discussion about <?php echo $tag; ?></a></p>
+<?php die(); ?>
+
+
+<?php endif; ?>
+
 
 <div id="primary" class="browse">
     <?php
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        if($tag = $request->getParam('tag')): ?>
-    <p class='tag-results'>Scholars who discuss <?php echo $tag; ?></p>
+        if($tag || $tags): 
+    ?>
+    <p class='tag-results'>Scholars who discuss <?php echo $tag; ?> <?php echo $tags; ?></p>
     
     <?php endif; ?>
     
@@ -54,7 +73,7 @@ head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 
             <?php if (item_has_tags()): ?>
                 <div class="tags"><p><strong><?php echo __('Tags'); ?></strong>
-                <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/sort_field/Dublin+Core,Title/tag/'); ?></p>
+                <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?></p>
                 </div>
             <?php endif; ?>
 

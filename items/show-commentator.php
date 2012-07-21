@@ -20,7 +20,7 @@ $secondaryHTML = "";
 
     <?php if (item_has_tags()): ?>
         <div class="tags"><p><strong><?php echo __('Tags'); ?></strong>
-        <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/sort_field/Dublin+Core,Title/tag/'); ?></p>
+        <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?></p>
         </div>
     <?php endif; ?>
     
@@ -116,6 +116,13 @@ $secondaryHTML = "";
             </div>        
             <div class='mlatei-discussion-wrap' id='<?php echo $discussion->xml_id; ?>'>
                 <h3><?php echo $discussion->label ;?></h3>
+                
+                <?php $tags = $discussion->getTags();
+               
+                ?>
+                <div class='tags'>
+                    <?php echo tag_string($tags); ?>
+                </div>
                 <div class='mlatei-discussion-content-wrap'>
                     <?php echo $discussion->html; ?>
                 </div>
