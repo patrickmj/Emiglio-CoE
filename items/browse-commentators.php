@@ -44,9 +44,9 @@
 
 
     <div id="pagination-top" class="pagination">
-        <?php include 'scholar_alpha_pagination.php' ;?>    
+        <?php include 'alpha_pagination.php' ;?>    
     </div>
-    <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
+    <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
     <?php while (loop_items()): ?>
         <div class="item hentry">
             <div class="item-meta">
