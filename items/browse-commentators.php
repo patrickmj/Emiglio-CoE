@@ -71,6 +71,19 @@
                 </div>
             <?php endif; ?>
 
+            
+            <!-- Bibliography -->
+            <div class='bibliography'>
+            <?php $bibliography = mla_get_bibliography_for_commentator($item); ?>
+            <?php foreach($bibliography as $bibEntry): ?>
+                <p>
+                    <?php echo $bibEntry->html; ?>
+                </p>
+            
+            <?php endforeach; ?>
+            </div>
+            
+            
             <?php if (item_has_tags()): ?>
                 <div class="tags"><p><strong><?php echo __('Tags'); ?></strong>
                 <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?></p>
