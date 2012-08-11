@@ -8,6 +8,8 @@ $appendixPsCount = count($appendixPs);
 $appendixNotes = mla_get_discussions_for_commentator('MlaTeiElement_AppendixNote');
 $appendixNotesCount = count($appendixNotes);
 $bibEntries = mla_get_bibliography_for_commentator();
+$editionEntries = mla_get_editions_for_commentator();
+$bibEntries = array_merge($bibEntries, $editionEntries);
 $bibEntriesCount = count($bibEntries);
 $secondaryHTML = "";
 ?>
@@ -42,23 +44,30 @@ $secondaryHTML = "";
 <!-- In Convo -->              
              
      <div id='mla-inconvo'>
-     <h2>In conversation with:</h2>
          <?php $commentators = mla_get_commentators_in_convo_with_commentator(); ?>
-         <ul class='mla-commentator'>
-         <?php foreach($commentators as $c): ?>
-             
-                 <li class='mla-in-convo'>
-                     <a href="<?php echo item_uri('show', $c['item']); ?>"><?php echo item('Dublin Core' , 'Title', array(), $c['item']); ?></a>
-                     <?php $classes = ''; 
-                         foreach($c['refs'] as $ref) {
-                                $classes .= ' ' . $ref['xml_id'];
-                            }
-                     ?>
-                     <span class="mla-convos <?php echo $classes; ?>">Convos</span>                                      
-                 </li>
          
-         <?php endforeach; ?>
-         </ul>
+         <h2>In conversation with <?php echo count($commentators); ?> scholars <a class='mla-toggle-details mla-reveal-open'>Details</a></h2>
+         
+         
+         
+         <div class='mla-details' style='display:none;'>
+             <a id='convo-reset'>Reset</a>
+             <ul class='mla-commentator'>
+             <?php foreach($commentators as $c): ?>
+                 
+                     <li class='mla-in-convo'>
+                         <a href="<?php echo item_uri('show', $c['item']); ?>"><?php echo item('Dublin Core' , 'Title', array(), $c['item']); ?></a>
+                         <?php $classes = ''; 
+                             foreach($c['refs'] as $ref) {
+                                    $classes .= ' ' . $ref['xml_id'];
+                                }
+                         ?>
+                         <span class="mla-convos <?php echo $classes; ?>">Convos</span>                                      
+                     </li>
+             
+             <?php endforeach; ?>
+             </ul>
+         </div>
      </div> 
     
     <ul id='mla-refs'>
@@ -88,8 +97,8 @@ $secondaryHTML = "";
             <div class='mlatei-discussion-wrap' id='<?php echo $discussion->xml_id; ?>'>
                 <div class='mlatei-discussion-references'>
                     <ul class='mlatei-discussion-nav'>
-                        <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' >Note Bibliography</li>
-                        <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' >Passages Mentioned</li>                    
+                        <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Note Bibliography</li>
+                        <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Passages Mentioned</li>                    
                     </ul>
                 </div>                
                 
@@ -151,8 +160,8 @@ $secondaryHTML = "";
             <div class='mlatei-discussion-wrap' id='<?php echo $discussion->xml_id; ?>'>
                 <div class='mlatei-discussion-references'>
                     <ul class='mlatei-discussion-nav'>
-                        <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' >Note Bibliography</li>
-                        <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' >Passages Mentioned</li>                    
+                        <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Note Bibliography</li>
+                        <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Passages Mentioned</li>                    
                     </ul>
                 </div>     
             
@@ -162,7 +171,7 @@ $secondaryHTML = "";
                
                 ?>
                 <div class='tags'>
-                    <?php echo tag_string($tags); ?>
+                    <?php echo tag_string($tags,  WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?>
                 </div>
                 <div class='mlatei-discussion-content-wrap'>
                     <?php echo $discussion->html; ?>
@@ -223,8 +232,8 @@ $secondaryHTML = "";
             <div class='mlatei-discussion-wrap' id='<?php echo $discussion->xml_id; ?>'>
             <div class='mlatei-discussion-references'>
                 <ul class='mlatei-discussion-nav'>
-                    <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' >Note Bibliography</li>
-                    <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' >Passages Mentioned</li>                    
+                    <li id='mlatei-discussion-bib-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Note Bibliography</li>
+                    <li id='mlatei-discussion-passages-<?php echo $discussion->id; ?>-nav' class='mla-reveal-open' >Passages Mentioned</li>                    
                 </ul>
             </div>   
             

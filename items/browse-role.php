@@ -17,7 +17,7 @@ head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
                 </div>
             <?php endif; ?>
 
-            <h2 class='mla-bib-entry'><?php echo link_to_item(item('Dublin Core', 'Title'), array('class'=>'permalink')); ?>                        
+            <h2 class='mla-bib-entry'><?php echo item('Dublin Core', 'Title'); ?>                        
             </h2>
 
             <?php if ($text = item('Item Type Metadata', 'Text', array('snippet'=>250))): ?>
@@ -30,8 +30,17 @@ head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
                 </div>
             <?php endif; ?>
 
+           
+            <!-- Commentators -->
+            <?php $commentators = mla_get_commentators_for_speech_role(); ?>
+            <p><?php echo count($commentators) . " scholars commenting on " . item('Dublin Core', 'Title') . "'s " . mla_count_speeches_for_role() . " speeches" ;?> <a class='mla-toggle-details mla-reveal-open'>Details</a></p>
             
-            
+            <div class='mla-details' style='display: none;'>
+                <?php foreach($commentators as $commentator): ?>
+                    <h3><?php echo link_to_item(item('Dublin Core', 'Title', array(), $commentator), array(), 'show', $commentator);?></h3>
+                
+                <?php endforeach; ?>
+            </div>
             <?php echo plugin_append_to_items_browse_each(); ?>
 
             </div><!-- end class="item-meta" -->

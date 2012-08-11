@@ -9,7 +9,7 @@
     }
 ?>
 
-<?php $letters = array('A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z') ;?>
+<?php $letters = array('A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','Z') ;?>
 
 <?php if($sort_field): ?>
     <p>Showing all results. Click letters below to limit the results.</p>

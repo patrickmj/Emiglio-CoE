@@ -40,7 +40,7 @@
     <?php endif; ?>
     
 
-    <h1><?php echo $pageTitle; ?> <?php echo __('(%s total)', total_results()); ?></h1>
+    <h1><?php echo $pageTitle; ?></h1>
 
 
     <div id="pagination-top" class="pagination">
@@ -124,7 +124,11 @@
     <?php endwhile; ?>
     <?php echo plugin_append_to_items_browse(); ?>
 
-    <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
+    <div id="pagination-bottom" class="pagination">
+        <?php include 'alpha_pagination.php' ;?>    
+    </div>
+    <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
+    
 </div>
 <div id="secondary">
 
