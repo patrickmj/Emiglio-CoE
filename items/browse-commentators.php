@@ -75,6 +75,8 @@
             <!-- Bibliography -->
             <div class='bibliography'>
             <?php $bibliography = mla_get_bibliography_for_commentator($item); ?>
+
+            <?php $bibliography = array_merge($bibliography, mla_get_editions_for_commentator($item)); ?>
             <?php foreach($bibliography as $bibEntry): ?>
                 <p>
                     <?php echo $bibEntry->html; ?>
@@ -85,7 +87,7 @@
             
             
             <?php if (item_has_tags()): ?>
-                <div class="tags"><p><strong><?php echo __('Tags'); ?></strong>
+                <div class="tags"><p><strong>Topics</strong>
                 <?php echo tag_string(get_current_item(), WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?></p>
                 </div>
             <?php endif; ?>
@@ -95,24 +97,28 @@
                 $commentaryNotesCount = mla_count_discussions_for_commentator('MlaTeiElement_CommentaryNote');
                 $bibCount = mla_count_bibliography_for_commentator();
                 $appPsCount = mla_count_discussions_for_commentator('MlaTeiElement_AppendixP'); 
-                $appNoteCount = mla_count_discussions_for_commentator('MlaTeiElement_AppendixNote');            
+                $appNoteCount = mla_count_discussions_for_commentator('MlaTeiElement_AppendixNote');
+                $editionCount = mla_count_editions_for_commentator();            
             ?>
             
             <ul id='mla-commentator-stats'>
                 <li>Passages
-                <span>(<?php echo $passagesCount; ?>)</span>
+                    <span>(<?php echo $passagesCount; ?>)</span>
                 </li>
                 <li>Commentary Notes
-                <span>(<?php echo $commentaryNotesCount; ?>)</span>
+                    <span>(<?php echo $commentaryNotesCount; ?>)</span>    
                 </li>
                 <li>Appendix References
-                <span>(<?php echo $appPsCount; ?>)</span>
+                    <span>(<?php echo $appPsCount; ?>)</span>
                 </li>
                 <li>Appendix Notes
-                <span>(<?php echo $appNoteCount; ?>)</span>
+                    <span>(<?php echo $appNoteCount; ?>)</span>
                 </li>
                 <li>Bibliography Entries
-                <span>(<?php echo $bibCount; ?>)</span>
+                    <span>(<?php echo $bibCount; ?>)</span>
+                </li>
+                <li>Editions
+                    <span>(<?php echo $editionCount; ?>)</span>
                 </li>
             </ul>
             

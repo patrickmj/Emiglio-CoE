@@ -29,10 +29,6 @@
 
         <div id="header">
             <?php plugin_page_header(); ?>
-            <div id="search-container">
-                <?php echo mla_simple_search(); ?>
-                <?php //echo link_to_advanced_search(); ?>
-            </div><!-- end search -->
 
             <div id="site-title"><?php echo link_to_home_page(custom_display_logo()); ?></div>
 

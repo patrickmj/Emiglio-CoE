@@ -314,3 +314,15 @@
         font-style:italic;
     }
 }
+
+
+
+#primary-nav a {
+    width: 130px;
+}
+
+#primary-nav li {
+    width: 130px;
+}
+
+
