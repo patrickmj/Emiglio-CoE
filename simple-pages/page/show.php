@@ -7,16 +7,13 @@ if (simple_pages_is_home_page(get_current_simple_page())) {
 
 <?php head(array('title' => html_escape(simple_page('title')), 'bodyclass' => $bodyclass, 'bodyid' => html_escape(simple_page('slug')))); ?>
 <div id="primary">
-    <?php if (!simple_pages_is_home_page(get_current_simple_page())): ?>
-    <p id="simple-pages-breadcrumbs"><?php echo simple_pages_display_breadcrumbs(); ?></p>
-    <?php endif; ?>
     <h1><?php echo html_escape(simple_page('title')); ?></h1>
     <?php echo eval('?>' . simple_page('text')); ?>
 </div>
-<?php if (!simple_pages_is_home_page(get_current_simple_page())): ?>
+
 <div id="secondary">
 <?php switch ($simplePage->slug) {
-    case 'tags':
+    case 'topics':
         $secHtml = "<p>Topics here are the headings in the appendix. Instead of linking directly ";
         $secHtml .= "they link to scholars cited in paragraphs under those headings. Thus, if you ";
         $secHtml .= "are interested in people who discuss, e.g., the date of composition of Comedy of Errors, ";
@@ -39,13 +36,12 @@ if (simple_pages_is_home_page(get_current_simple_page())) {
         
         break;
     
-    
-    
-    
-    
+    default:
+        $secHtml = simple_pages_navigation(0, null, null, null, true);    
 }
  echo $secHtml;
+ 
 ?>
 </div>
-<?php endif; ?>
+
 <?php echo foot(); ?>

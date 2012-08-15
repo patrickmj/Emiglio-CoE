@@ -318,11 +318,13 @@
 
 
 #primary-nav a {
-    width: 130px;
+    width: 112px;
 }
 
 #primary-nav li {
-    width: 130px;
+    width: 105px;
 }
 
-
+#items.show #primary {
+    border-right: 1px solid #DDDDDD;
+}
