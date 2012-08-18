@@ -315,7 +315,7 @@
     }
 }
 
-
+/* PMJ overrides */
 
 #primary-nav a {
     width: 112px;
@@ -328,3 +328,22 @@
 #items.show #primary {
     border-right: 1px solid #DDDDDD;
 }
+
+ul.simple-pages-navigation li.current {
+    font-weight: bold;
+}
+
+ul.simple-pages-navigation li.current ul {
+    font-weight: normal;
+}
+
+
+p.speech {
+    font-size: 1em;
+    line-height: 1.2em;
+
+}
+
+
+
+#footer-text {width: inherit; }

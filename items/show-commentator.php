@@ -116,9 +116,7 @@ $secondaryHTML = "";
                         $bib = array_merge($discBib, $editions);
                         
                         foreach($bib as $entry) {
-                            $secondaryHTML .= "<div class='mla-bib-entry'>";
-                            $secondaryHTML .= $entry->html;
-                            $secondaryHTML .= "</div>";
+                            $secondaryHTML .= mla_bib_secondary_html($entry);
                         }
                         $secondaryHTML .= "</div>"; 
             
@@ -167,12 +165,10 @@ $secondaryHTML = "";
             
             <h3><?php echo $discussion->label ;?></h3>
                 
-                <?php $tags = $discussion->getTags();
-               
-                ?>
-                <div class='tags'>
+                <?php $tags = $discussion->getTags(); ?>
+                <p class='tags'>
                     <?php echo tag_string($tags,  WEB_ROOT . '/items/browse/type/Commentator/sort_field/Dublin+Core,Title/tag/'); ?>
-                </div>
+                </p>
                 <div class='mlatei-discussion-content-wrap'>
                     <?php echo $discussion->html; ?>
                 </div>
@@ -186,9 +182,7 @@ $secondaryHTML = "";
                         $bib = array_merge($discBib, $editions);
                         
                         foreach($bib as $entry) {
-                            $secondaryHTML .= "<div class='mla-bib-entry'>";
-                            $secondaryHTML .= $entry->html;
-                            $secondaryHTML .= "</div>";
+                            $secondaryHTML .= mla_bib_secondary_html($entry);
                         }
                         $secondaryHTML .= "</div>"; 
             
@@ -251,9 +245,7 @@ $secondaryHTML = "";
                         $bib = array_merge($discBib, $editions);
                         
                         foreach($bib as $entry) {
-                            $secondaryHTML .= "<div class='mla-bib-entry'>";
-                            $secondaryHTML .= $entry->html;
-                            $secondaryHTML .= "</div>";
+                            $secondaryHTML .= mla_bib_secondary_html($entry);
                         }
                         $secondaryHTML .= "</div>"; 
             

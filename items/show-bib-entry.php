@@ -12,7 +12,7 @@
         
         <?php endforeach; ?>
     </ul>
-
+<p>Publisher: <?php echo item('Dublin Core', 'Publisher'); ?></p>
     
     <p class='mla-citation'>        
         <?php echo item('Item Type Metadata', 'Citation'); ?>

@@ -2,6 +2,13 @@
 $pageTitle = "Roles";
 head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
+<style type='text/css'>
+div.mla-details {
+    margin-left: 12px;
+}
+
+
+</style>
 
 <div id='primary' class='browse'>
 
