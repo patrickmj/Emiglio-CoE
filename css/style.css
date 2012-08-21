@@ -346,7 +346,7 @@ p.speech {
 }
 
 
-a.witness, a.note_tn, a.note_cn {
+a.witness, a.note_tn, a.note_cn , a.bibl_pw {
     color: #222222;
     text-decoration: none;
     cursor: text;
