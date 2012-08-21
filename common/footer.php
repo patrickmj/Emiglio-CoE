@@ -12,8 +12,12 @@
                     <p><?php echo $copyright; ?></p>
                 <?php endif; ?>
                 <p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>'); ?>,
-                the Modern Language Association's New Variorum Shakespeare Challenge, its data,
-                and the awesomeness of my friends and colleagues who inspire me to experiment
+                the <a href='http://www.mla.org/nvs_challenge'>Modern Language Association's New Variorum Shakespeare Challenge</a>, its <a href='https://github.com/mlaa/nvs-challenge'>data</a>,
+                and the awesomeness of my friends and colleagues who inspire me to experiment.
+                </p>
+                <p>
+                You can read more about the technical and conceptual hows and whys of building this site
+                <a href='http://hackingthehumanities.org/post/s-hack-speare-or-building-bill-crit-o-matic'>here</a>.
                 </p>
             </div>
 

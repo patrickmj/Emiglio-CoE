@@ -319,6 +319,7 @@
 
 #primary-nav a {
     width: 112px;
+    height: 40px;
 }
 
 #primary-nav li {
@@ -345,5 +346,10 @@ p.speech {
 }
 
 
+a.witness, a.note_tn, a.note_cn {
+    color: #222222;
+    text-decoration: none;
+    cursor: text;
+}
 
 #footer-text {width: inherit; }
